@@ -221,6 +221,7 @@ class HomeDashboardPage extends StatelessWidget {
 }
 
 Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
+  final RestaurantService _restaurantService = RestaurantService();
   return Container(
     margin: const EdgeInsets.only(top: 30),
     child: Column(
@@ -243,9 +244,18 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
             // Gunakan data dari API untuk mengisi informasi restoran
             Restaurant restaurant = restaurants[index];
             return GestureDetector(
-              onTap: () {
-                // Navigasi ke halaman detail restoran
-               Navigator.pushNamed(context, '/restaurant-detail', arguments: restaurant.id);
+              onTap: () async {
+                try {
+                  RestaurantDetail restaurantDetail = await _restaurantService
+                      .fetchRestaurantDetail(restaurant.id);
+                  Navigator.pushNamed(
+                    context,
+                    '/restaurant-detail',
+                    arguments: {'restaurantDetail': restaurantDetail},
+                  );
+                } catch (e) {
+                  print('Error fetching restaurant detail: $e');
+                }
               },
               child: Container(
                 margin: const EdgeInsets.only(bottom: 16),
