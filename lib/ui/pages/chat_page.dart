@@ -88,7 +88,7 @@ class _ChatPageState extends State<ChatPage> {
         _messages.add(
           ChatMessage(
             text: _messageController.text,
-            isUserMessage: true, // Ganti dengan logika sesuai pengirim
+            isUserMessage: true, //logika sesuai pengirim
           ),
         );
         _messageController.clear();

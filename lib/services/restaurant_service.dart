@@ -3,8 +3,9 @@ import 'package:http/http.dart' as http;
 import '../models/restaurant.dart';
 
 class RestaurantService {
- Future<List<Restaurant>> fetchRestaurants() async {
-    final response = await http.get(Uri.parse('https://restaurant-api.dicoding.dev/list'));
+  Future<List<Restaurant>> fetchRestaurants() async {
+    final response =
+        await http.get(Uri.parse('https://restaurant-api.dicoding.dev/list'));
 
     if (response.statusCode == 200) {
       final List<dynamic> data = json.decode(response.body)['restaurants'];
@@ -44,19 +45,25 @@ class RestaurantService {
   Future<List<CustomerReview>> addReview(
       String id, String name, String review) async {
     final Uri uri = Uri.parse('https://restaurant-api.dicoding.dev/review');
-    final response = await http.post(
-      uri,
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({'id': id, 'name': name, 'review': review}),
-    );
 
-    if (response.statusCode == 200) {
-      Map<String, dynamic> data = json.decode(response.body);
-      List<dynamic> customerReviews = data['customerReviews'];
-      return customerReviews
-          .map((item) => CustomerReview.fromJson(item))
-          .toList();
-    } else {
+    try {
+      final response = await http.post(
+        uri,
+        headers: {'Content-Type': 'application/json'},
+        body: json.encode({'id': id, 'name': name, 'review': review}),
+      );
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> data = json.decode(response.body);
+        List<dynamic> customerReviews = data['customerReviews'];
+        return customerReviews
+            .map((item) => CustomerReview.fromJson(item))
+            .toList();
+      } else {
+        throw Exception('Failed to add review');
+      }
+    } catch (e) {
+      print('Error adding review: $e');
       throw Exception('Failed to add review');
     }
   }

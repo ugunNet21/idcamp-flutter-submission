@@ -1,11 +1,9 @@
-import 'dart:convert';
-
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_subm_1/models/restaurant.dart';
 import 'package:flutter_subm_1/shared/themes.dart';
 import 'package:flutter_subm_1/ui/widgets/home_carousel.dart';
-// import 'package:http/http.dart' as http;
 import 'package:flutter_subm_1/services/restaurant_service.dart';
 
 class HomeDashboardPage extends StatelessWidget {
@@ -222,6 +220,7 @@ class HomeDashboardPage extends StatelessWidget {
 
 Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
   final RestaurantService _restaurantService = RestaurantService();
+
   return Container(
     margin: const EdgeInsets.only(top: 30),
     child: Column(
@@ -262,10 +261,14 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.network(
-                      'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
-                      height: 80,
-                      width: 60,
+                    // Tambahkan ClipRRect untuk membuat gambar berbentuk rounded
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        'https://restaurant-api.dicoding.dev/images/small/${restaurant.pictureId}',
+                        height: 80,
+                        width: 120,
+                      ),
                     ),
                     const SizedBox(width: 16.0),
                     Column(
@@ -278,16 +281,41 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
                             fontWeight: semibold,
                           ),
                         ),
-                        SizedBox(
-                          width: 240,
-                          child: Text(
-                            restaurant.description,
-                            style: blackTextStyle.copyWith(
-                              fontSize: 12,
+                        const SizedBox(height: 4),
+                        // Tampilkan ikon lokasi
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.location_on,
+                              size: 14,
+                              color: greyColor,
                             ),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                            const SizedBox(width: 4),
+                            Text(
+                              restaurant.city,
+                              style: greyTextStyle.copyWith(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        // Tampilkan Rating menggunakan RatingBar
+                        RatingBar.builder(
+                          initialRating: restaurant.rating,
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          itemCount: 5,
+                          itemSize: 16,
+                          itemPadding: EdgeInsets.symmetric(horizontal: 1.0),
+                          itemBuilder: (context, _) => Icon(
+                            Icons.star,
+                            color: Colors.amber,
                           ),
+                          onRatingUpdate: (rating) {
+                            // Rating yang diupdate
+                          },
                         ),
                       ],
                     ),

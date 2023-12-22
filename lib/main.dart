@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_subm_1/ui/pages/account_page.dart';
+import 'package:flutter_subm_1/ui/pages/add_review_page.dart';
 import 'package:flutter_subm_1/ui/pages/home_tab_page.dart';
 import 'package:flutter_subm_1/ui/pages/login_page.dart';
 import 'package:flutter_subm_1/ui/pages/restaurant_detail.dart';
@@ -22,8 +23,15 @@ class MainApp extends StatelessWidget {
         '/home': (context) => const HomeTabPage(),
         '/login-page': (context) => const LoginPage(),
         '/account-page': (context) => const AccountPage(),
-        '/restaurant-detail': (context) =>  RestaurantDetailPage(),
+        '/restaurant-detail': (context) => RestaurantDetailPage(),
         // '/restaurant-list': (context) => const RestaurantList(),
+        '/add-review': (context) {
+          final Map<String, dynamic> args = ModalRoute.of(context)!
+              .settings
+              .arguments as Map<String, dynamic>;
+          final String restaurantId = args['restaurantId'];
+          return AddReviewPage(restaurantId: restaurantId);
+        },
       },
     );
   }
