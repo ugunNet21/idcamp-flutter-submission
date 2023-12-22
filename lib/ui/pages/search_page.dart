@@ -16,7 +16,7 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Restaurant Search'),
+        title: const Text('Restaurant Search'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -57,7 +57,7 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
 
   Widget _buildSearchResults() {
     if (_searchResults.isEmpty) {
-      return Center(
+      return const Center(
         child: Text('No results found.'),
       );
     }
@@ -69,13 +69,18 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
         return ListTile(
           title: Text(restaurant.name),
           subtitle: Text(restaurant.city),
-          onTap: () {
-            // Navigate to restaurant detail page
-            Navigator.pushNamed(
-              context,
-              '/restaurant-detail',
-              arguments: {'restaurant': restaurant},
-            );
+          onTap: () async {
+            try {
+              RestaurantDetail restaurantDetail =
+                  await _restaurantService.fetchRestaurantDetail(restaurant.id);
+              Navigator.pushNamed(
+                context,
+                '/restaurant-detail',
+                arguments: {'restaurantDetail': restaurantDetail},
+              );
+            } catch (e) {
+              print('Error fetching restaurant detail: $e');
+            }
           },
         );
       },

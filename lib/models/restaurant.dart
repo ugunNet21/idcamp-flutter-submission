@@ -24,6 +24,7 @@ class Restaurant {
       pictureId: json['pictureId'],
       city: json['city'],
       rating: json['rating'].toDouble(),
+      
     );
   }
 }

@@ -1,10 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_subm_1/shared/themes.dart';
 
-class TrackPage extends StatelessWidget {
-  const TrackPage({super.key});
+class OrderRestaurantPage extends StatelessWidget {
+  const OrderRestaurantPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +10,7 @@ class TrackPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'Status Layanan',
+            'Menu Restoran',
             style: whiteTextStyle.copyWith(
               fontSize: 18,
               fontWeight: medium,
@@ -27,7 +25,7 @@ class TrackPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Status Pemesanan:',
+                'Menu Pilihan:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -37,7 +35,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Sedang dilakukan pengecekan oleh teknisi.',
+                'Nasi Goreng Spesial',
                 style: blackTextStyle.copyWith(
                   fontSize: 12,
                 ),
@@ -46,7 +44,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Estimasi Harga:',
+                'Harga:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -56,7 +54,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Rp. 500.000',
+                'Rp. 35.000',
                 style: blackTextStyle.copyWith(
                   fontSize: 12,
                 ),
@@ -65,7 +63,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Jenis Kerusakan:',
+                'Deskripsi:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -75,7 +73,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Laptop Tidak Bisa Booting',
+                'Nasi goreng spesial dengan campuran rempah pilihan dan topping yang lezat.',
                 style: blackTextStyle.copyWith(
                   fontSize: 12,
                 ),
@@ -84,7 +82,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Informasi Teknisi:',
+                'Rating:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -94,19 +92,7 @@ class TrackPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Nama Teknisi : Ugun',
-                style: blackTextStyle.copyWith(
-                  fontSize: 12,
-                ),
-              ),
-              Text(
-                'Hari dan Tanggal : Senin, 03 Agustus 2023',
-                style: blackTextStyle.copyWith(
-                  fontSize: 12,
-                ),
-              ),
-              Text(
-                'Jl. Cimeuhmal Cimahi Barat',
+                '4.5/5 (120 ulasan)',
                 style: blackTextStyle.copyWith(
                   fontSize: 12,
                 ),
@@ -114,15 +100,17 @@ class TrackPage extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
-              // ElevatedButton(
-              //   onPressed: () {},
-              //   child: Text(
-              //     'Print Nota Perbaikan',
-              //     style: whiteTextStyle.copyWith(
-              //       fontSize: 14,
-              //     ),
-              //   ),
-              // ),
+              ElevatedButton(
+                onPressed: () {
+                  // Tambahkan logika untuk menambahkan item ke keranjang belanja
+                },
+                child: Text(
+                  'Tambah ke Keranjang',
+                  style: whiteTextStyle.copyWith(
+                    fontSize: 14,
+                  ),
+                ),
+              ),
             ],
           ),
         ),

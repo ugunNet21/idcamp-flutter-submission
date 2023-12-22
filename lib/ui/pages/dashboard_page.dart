@@ -6,42 +6,56 @@ import 'package:flutter_subm_1/shared/themes.dart';
 import 'package:flutter_subm_1/ui/widgets/home_carousel.dart';
 import 'package:flutter_subm_1/services/restaurant_service.dart';
 
-class HomeDashboardPage extends StatelessWidget {
+class HomeDashboardPage extends StatefulWidget {
   HomeDashboardPage({Key? key}) : super(key: key);
+
+  @override
+  State<HomeDashboardPage> createState() => _HomeDashboardPageState();
+}
+
+class _HomeDashboardPageState extends State<HomeDashboardPage> {
   final RestaurantService restaurantService = RestaurantService();
+  // Fungsi untuk mereset state dan memanggil kembali data
+  Future<void> _refreshData() async {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<List<Restaurant>>(
-        future: restaurantService.fetchRestaurants(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            if (snapshot.hasData) {
-              List<Restaurant> restaurants = snapshot.data!;
-              return ListView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                children: [
-                  buildProfile(context),
-                  buildCarousel(),
-                  buildServices(context),
-                  buildTips(),
-                  buildSearchButton(context),
-                  buildRestaurantList(context, restaurants),
-                ],
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
-              );
+      body: RefreshIndicator(
+        onRefresh: _refreshData,
+        child: FutureBuilder<List<Restaurant>>(
+          future: restaurantService.fetchRestaurants(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              if (snapshot.hasData) {
+                List<Restaurant> restaurants = snapshot.data!;
+                return ListView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  children: [
+                    buildProfile(context),
+                    buildSearchButton(context),
+                    buildCarousel(),
+                    // buildServices(context),
+                    // buildTips(),
+                    buildRestaurantList(context, restaurants),
+                  ],
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text('Error: ${snapshot.error}'),
+                );
+              }
             }
-          }
-          // Menampilkan indikator loading jika data masih diambil
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+            // Menampilkan indikator loading jika data masih diambil
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          },
+        ),
       ),
     );
   }
@@ -56,7 +70,7 @@ class HomeDashboardPage extends StatelessWidget {
           // Navigasi ke halaman pencarian
           Navigator.pushNamed(context, '/restaurant-search');
         },
-        child: Text('Cari Restoran'),
+        child: Text('Search Restaurants'),
       ),
     );
   }
@@ -105,7 +119,7 @@ Widget buildProfile(BuildContext context) {
               shape: BoxShape.circle,
               image: DecorationImage(
                 image: AssetImage(
-                  'assets/pa_idan.png',
+                  'assets/img_friend4.png',
                 ),
               ),
             ),
@@ -154,7 +168,7 @@ Widget buildCarousel() {
           imageUrl: 'assets/ic_resto.png',
           title: 'Resto B',
         ),
-        // Tambahkan item-carousel lainnya sesuai kebutuhan Anda
+        // Tambahkan item-carousel lainnya
       ],
     ),
   );
@@ -243,7 +257,7 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Daftar Restoran',
+          'List of Restaurants',
           style: blackTextStyle.copyWith(
             fontWeight: semibold,
             fontSize: 16,

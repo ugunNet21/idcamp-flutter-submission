@@ -31,14 +31,14 @@ class AccountPage extends StatelessWidget {
                 const Center(
                   child: CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage('assets/pa_idan.png'),
+                    backgroundImage: AssetImage('assets/img_friend4.png'),
                   ),
                 ),
                 const SizedBox(
                   height: 40,
                 ),
                 Text(
-                  'Nama Pengguna:',
+                  'Name :',
                   style: blackTextStyle.copyWith(
                     fontSize: 18,
                     fontWeight: semibold,

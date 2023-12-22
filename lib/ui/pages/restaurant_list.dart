@@ -46,7 +46,9 @@ class _RestaurantListState extends State<RestaurantList> {
                   subtitle: Text(restaurant.city),
                   onTap: () async {
                     try {
-                      RestaurantDetail restaurantDetail = await _restaurantService.fetchRestaurantDetail(restaurant.id);
+                      RestaurantDetail restaurantDetail =
+                          await _restaurantService
+                              .fetchRestaurantDetail(restaurant.id);
                       Navigator.pushNamed(
                         context,
                         '/restaurant-detail',
@@ -59,7 +61,7 @@ class _RestaurantListState extends State<RestaurantList> {
                 );
               },
             )
-          : Center(
+          : const Center(
               child: CircularProgressIndicator(),
             ),
     );

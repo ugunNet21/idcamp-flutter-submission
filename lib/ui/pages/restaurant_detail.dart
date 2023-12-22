@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_subm_1/models/restaurant.dart';
 import 'package:flutter_subm_1/services/restaurant_service.dart';
+import 'package:flutter_subm_1/shared/themes.dart';
 // import 'package:flutter_subm_1/ui/pages/add_review_page.dart';
 
 class RestaurantDetailPage extends StatefulWidget {
-
   RestaurantDetailPage({Key? key}) : super(key: key);
 
   @override
@@ -13,13 +12,13 @@ class RestaurantDetailPage extends StatefulWidget {
 
 class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
   final RestaurantService _restaurantService = RestaurantService();
-  
+
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final RestaurantDetail restaurantDetail = args['restaurantDetail'];
-    final Restaurant restaurant = args['restaurant'];
+    // final Restaurant restaurant = args['restaurant'];
 
     return Scaffold(
       appBar: AppBar(
@@ -42,16 +41,14 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              'Description:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              'Description :',
+              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: bold),
             ),
             const SizedBox(height: 8),
-            // Display justified text for description
             Text(
               restaurantDetail.description,
-              style: TextStyle(
-                fontSize: 16,
-              ),
+              style: blackTextStyle.copyWith(fontSize: 14),
+              textAlign: TextAlign.justify,
             ),
             const SizedBox(height: 16),
             Row(
@@ -60,7 +57,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                 const SizedBox(width: 8),
                 Text(
                   'City: ${restaurantDetail.city}',
-                  style: TextStyle(fontSize: 16),
+                  style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ],
             ),
@@ -71,7 +68,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                 const SizedBox(width: 8),
                 Text(
                   'Address: ${restaurantDetail.address}',
-                  style: TextStyle(fontSize: 16),
+                  style: blackTextStyle.copyWith(fontSize: 14),
                 ),
               ],
             ),
@@ -80,10 +77,8 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
               children: [
                 Icon(Icons.star),
                 const SizedBox(width: 8),
-                Text(
-                  'Rating: ${restaurantDetail.rating}',
-                  style: TextStyle(fontSize: 16),
-                ),
+                Text('Rating: ${restaurantDetail.rating}',
+                    style: blackTextStyle.copyWith(fontSize: 14)),
               ],
             ),
             const SizedBox(height: 16),
@@ -98,21 +93,22 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
               children: restaurantDetail.categories.map((category) {
                 return Text(
                   '- ${category.name}',
-                  style: TextStyle(fontSize: 16),
+                  style:
+                      blackTextStyle.copyWith(fontSize: 18, fontWeight: bold),
                 );
               }).toList(),
             ),
             const SizedBox(height: 16),
             Text(
-              'Menus:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              'Menu:',
+              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: bold),
             ),
             const SizedBox(height: 8),
             Text(
               'Foods:',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: blackTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
-            // Display the list of food items horizontally with images
+            // Display the list of food items horizontally 
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -122,7 +118,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                     child: Column(
                       children: [
                         Image.asset(
-                          'assets/ic_foods.png', // Replace with actual food images
+                          'assets/ic_foods.png', 
                           height: 80,
                           width: 80,
                           fit: BoxFit.cover,
@@ -130,7 +126,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                         const SizedBox(height: 8),
                         Text(
                           '- ${food.name}',
-                          style: TextStyle(fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 14),
                         ),
                       ],
                     ),
@@ -141,9 +137,9 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             const SizedBox(height: 16),
             Text(
               'Drinks:',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              style: blackTextStyle.copyWith(fontSize: 16, fontWeight: bold),
             ),
-            // Display the list of drink items horizontally with images
+            // Display the list of drink items horizontally 
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -153,7 +149,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                     child: Column(
                       children: [
                         Image.asset(
-                          'assets/ic_drinks.png', // Replace with actual drink images
+                          'assets/ic_drinks.png', 
                           height: 80,
                           width: 80,
                           fit: BoxFit.cover,
@@ -161,7 +157,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                         const SizedBox(height: 8),
                         Text(
                           '- ${drink.name}',
-                          style: TextStyle(fontSize: 16),
+                          style: blackTextStyle.copyWith(fontSize: 14),
                         ),
                       ],
                     ),
@@ -191,8 +187,8 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
             ),
             const SizedBox(height: 16),
             Text(
-              'User Ratings & Reviews:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              'Ratings :',
+              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: bold),
             ),
             const SizedBox(height: 8),
             // Display the restaurant's average rating
@@ -202,7 +198,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                 const SizedBox(width: 8),
                 Text(
                   'Average Rating: ${restaurantDetail.rating}',
-                  style: TextStyle(fontSize: 16),
+                  style: blackTextStyle.copyWith(fontSize: 16),
                 ),
               ],
             ),
@@ -216,14 +212,11 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   children: [
                     Text(
                       '${review.name} (${review.date})',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: blackTextStyle.copyWith(fontSize: 14, fontWeight: bold),
                     ),
                     Text(
                       '${review.review}',
-                      style: TextStyle(fontSize: 16),
+                      style: blackTextStyle.copyWith(fontSize: 14),
                     ),
                     const SizedBox(height: 8),
                   ],
