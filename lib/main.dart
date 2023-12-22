@@ -4,6 +4,7 @@ import 'package:flutter_subm_1/ui/pages/add_review_page.dart';
 import 'package:flutter_subm_1/ui/pages/home_tab_page.dart';
 import 'package:flutter_subm_1/ui/pages/login_page.dart';
 import 'package:flutter_subm_1/ui/pages/restaurant_detail.dart';
+import 'package:flutter_subm_1/ui/pages/search_page.dart';
 import 'package:flutter_subm_1/ui/pages/splash_page.dart';
 
 void main() {
@@ -24,6 +25,7 @@ class MainApp extends StatelessWidget {
         '/login-page': (context) => const LoginPage(),
         '/account-page': (context) => const AccountPage(),
         '/restaurant-detail': (context) => RestaurantDetailPage(),
+        '/restaurant-search': (context) =>  RestaurantSearchPage(),
         // '/restaurant-list': (context) => const RestaurantList(),
         '/add-review': (context) {
           final Map<String, dynamic> args = ModalRoute.of(context)!

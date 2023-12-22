@@ -53,13 +53,16 @@ class RestaurantService {
         body: json.encode({'id': id, 'name': name, 'review': review}),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 201) {
+        // Review berhasil dikirim
         Map<String, dynamic> data = json.decode(response.body);
         List<dynamic> customerReviews = data['customerReviews'];
+        print('Review successfully added!');
         return customerReviews
             .map((item) => CustomerReview.fromJson(item))
             .toList();
       } else {
+        print('Error adding review: ${response.statusCode}, ${response.body}');
         throw Exception('Failed to add review');
       }
     } catch (e) {

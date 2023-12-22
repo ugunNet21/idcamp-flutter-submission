@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_subm_1/models/restaurant.dart';
 import 'package:flutter_subm_1/services/restaurant_service.dart';
-import 'package:flutter_subm_1/ui/pages/add_review_page.dart';
+// import 'package:flutter_subm_1/ui/pages/add_review_page.dart';
 
-class RestaurantDetailPage extends StatelessWidget {
-  final RestaurantService _restaurantService = RestaurantService();
-  // final RestaurantService restaurantService = RestaurantService();
+class RestaurantDetailPage extends StatefulWidget {
+
   RestaurantDetailPage({Key? key}) : super(key: key);
 
+  @override
+  State<RestaurantDetailPage> createState() => _RestaurantDetailPageState();
+}
+
+class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
+  final RestaurantService _restaurantService = RestaurantService();
+  
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> args =
         ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     final RestaurantDetail restaurantDetail = args['restaurantDetail'];
+    final Restaurant restaurant = args['restaurant'];
 
     return Scaffold(
       appBar: AppBar(
