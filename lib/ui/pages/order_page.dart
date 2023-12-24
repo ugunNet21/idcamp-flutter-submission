@@ -10,8 +10,8 @@ class OrderRestaurantPage extends StatelessWidget {
       appBar: AppBar(
         title: Center(
           child: Text(
-            'Menu Restoran',
-            style: whiteTextStyle.copyWith(
+            'Menu Restaurant',
+            style: blackTextStyle.copyWith(
               fontSize: 18,
               fontWeight: medium,
             ),
@@ -25,7 +25,7 @@ class OrderRestaurantPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Menu Pilihan:',
+                'Menu Order:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -44,7 +44,7 @@ class OrderRestaurantPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Harga:',
+                'Price:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -63,7 +63,7 @@ class OrderRestaurantPage extends StatelessWidget {
                 height: 8,
               ),
               Text(
-                'Deskripsi:',
+                'Description:',
                 style: blackTextStyle.copyWith(
                   fontSize: 18,
                   fontWeight: semibold,
@@ -101,12 +101,10 @@ class OrderRestaurantPage extends StatelessWidget {
                 height: 32,
               ),
               ElevatedButton(
-                onPressed: () {
-                  // Tambahkan logika untuk menambahkan item ke keranjang belanja
-                },
+                onPressed: () {},
                 child: Text(
-                  'Tambah ke Keranjang',
-                  style: whiteTextStyle.copyWith(
+                  'Add to Cart',
+                  style: orangeTextStyle.copyWith(
                     fontSize: 14,
                   ),
                 ),

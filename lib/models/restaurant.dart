@@ -14,8 +14,6 @@ class Restaurant {
     required this.city,
     required this.rating,
   });
-
-  // Metode untuk membuat objek Restaurant dari data JSON
   factory Restaurant.fromJson(Map<String, dynamic> json) {
     return Restaurant(
       id: json['id'],
@@ -24,8 +22,6 @@ class Restaurant {
       pictureId: json['pictureId'],
       city: json['city'],
       rating: json['rating'].toDouble(),
-      
     );
   }
 }
-

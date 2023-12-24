@@ -10,6 +10,7 @@ dependencies:
   carousel_slider: ^4.2.1
   http: ^1.1.2
   flutter_rating_bar: ^4.0.0
+  get: ^4.6.6
   flutter:
     sdk: flutter
   google_fonts: ^6.0.0

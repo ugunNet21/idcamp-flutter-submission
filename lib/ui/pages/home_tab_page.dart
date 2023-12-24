@@ -16,7 +16,7 @@ class _HomeTabPageState extends State<HomeTabPage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-     HomeDashboardPage(),
+    HomeDashboardPage(),
     const ChatPage(),
     const OrderRestaurantPage(),
     const AccountPage(),

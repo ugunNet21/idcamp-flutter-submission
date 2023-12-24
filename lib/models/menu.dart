@@ -1,5 +1,5 @@
-class Menu {
-  final String name;
+// class Menu {
+//   final String name;
 
-  Menu({required this.name});
-}
+//   Menu({required this.name});
+// }

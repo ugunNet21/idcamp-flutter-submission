@@ -58,7 +58,6 @@ class _ChatPageState extends State<ChatPage> {
               Icons.image,
             ),
             onPressed: () {
-              // Logika untuk menyisipkan gambar
             },
           ),
           Expanded(

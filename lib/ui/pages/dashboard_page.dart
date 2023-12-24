@@ -14,10 +14,47 @@ class HomeDashboardPage extends StatefulWidget {
 }
 
 class _HomeDashboardPageState extends State<HomeDashboardPage> {
+  List<CustomerReview>? _updatedReviews;
+  final RestaurantService _restaurantService = RestaurantService();
+  late RestaurantDetail restaurantDetail;
   final RestaurantService restaurantService = RestaurantService();
   // Fungsi untuk mereset state dan memanggil kembali data
+  // Future<void> _refreshData() async {
+  //   setState(() {});
+  // }
   Future<void> _refreshData() async {
-    setState(() {});
+    try {
+      final Map<String, dynamic>? args =
+          ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>?;
+
+      if (args != null && args['restaurantDetail'] is RestaurantDetail) {
+        final String restaurantId = args['restaurantDetail'].id;
+        final RestaurantDetail updatedRestaurantDetail =
+            await _restaurantService.fetchRestaurantDetail(restaurantId);
+
+        print('Start refreshing data...');
+        setState(() {
+          restaurantDetail = updatedRestaurantDetail;
+        });
+        print('Data successfully refreshed.');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Data successfully refreshed.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      } else {
+        print('Error: Invalid or null restaurant detail.');
+      }
+    } catch (e) {
+      print('Error refreshing data: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error refreshing data: $e'),
+          duration: Duration(seconds: 2),
+        ),
+      );
+    }
   }
 
   @override
@@ -39,8 +76,6 @@ class _HomeDashboardPageState extends State<HomeDashboardPage> {
                     buildProfile(context),
                     buildSearchButton(context),
                     buildCarousel(),
-                    // buildServices(context),
-                    // buildTips(),
                     buildRestaurantList(context, restaurants),
                   ],
                 );
@@ -70,7 +105,13 @@ class _HomeDashboardPageState extends State<HomeDashboardPage> {
           // Navigasi ke halaman pencarian
           Navigator.pushNamed(context, '/restaurant-search');
         },
-        child: Text('Search Restaurants'),
+        child: Text(
+          'Search Restaurants',
+          style: orangeTextStyle.copyWith(
+            fontSize: 14,
+            fontWeight: medium,
+          ),
+        ),
       ),
     );
   }
@@ -97,7 +138,7 @@ Widget buildProfile(BuildContext context) {
               height: 2,
             ),
             Text(
-              'Idan Abdul Rohman',
+              'Gugun Gunawan',
               style: blackTextStyle.copyWith(
                 fontSize: 20,
                 fontWeight: semibold,
@@ -162,87 +203,13 @@ Widget buildCarousel() {
       items: const [
         HomeCarousel(
           imageUrl: 'assets/ic_resto.png',
-          title: 'Resto A',
+          title: 'Promo Akhir Tahun Resto Mang Ugun',
         ),
         HomeCarousel(
           imageUrl: 'assets/ic_resto.png',
-          title: 'Resto B',
+          title: 'Promo Makan Enak B',
         ),
         // Tambahkan item-carousel lainnya
-      ],
-    ),
-  );
-}
-
-Widget buildServices(BuildContext context) {
-  return Container(
-    margin: const EdgeInsets.only(
-      top: 30,
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Restaurant',
-          style: blackTextStyle.copyWith(
-            fontWeight: semibold,
-            fontSize: 16,
-          ),
-        ),
-        const SizedBox(
-          height: 14,
-        ),
-      ],
-    ),
-  );
-}
-
-Widget buildTips() {
-  return Container(
-    padding: const EdgeInsets.only(top: 20),
-    child: Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/ic_resto.png',
-              height: 60,
-            ),
-            const SizedBox(
-              width: 16.0,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Resto Bandung :',
-                  style: greyTextStyle.copyWith(
-                    fontSize: 14,
-                    fontWeight: semibold,
-                  ),
-                ),
-                SizedBox(
-                  width: 240,
-                  child: Text(
-                    'Resto Bandung terkenal nikmat',
-                    style: blackTextStyle.copyWith(
-                      fontSize: 12,
-                    ),
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        const SizedBox(
-          height: 40,
-        )
       ],
     ),
   );
@@ -291,7 +258,7 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Tambahkan ClipRRect untuk membuat gambar berbentuk rounded
+                    // ClipRRect untuk membuat gambar berbentuk rounded
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.network(
@@ -306,7 +273,7 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
                       children: [
                         Text(
                           restaurant.name,
-                          style: greyTextStyle.copyWith(
+                          style: blackTextStyle.copyWith(
                             fontSize: 14,
                             fontWeight: semibold,
                           ),
@@ -318,12 +285,12 @@ Widget buildRestaurantList(BuildContext context, List<Restaurant> restaurants) {
                             Icon(
                               Icons.location_on,
                               size: 14,
-                              color: greyColor,
+                              color: blackColor,
                             ),
                             const SizedBox(width: 4),
                             Text(
                               restaurant.city,
-                              style: greyTextStyle.copyWith(
+                              style: blackTextStyle.copyWith(
                                 fontSize: 12,
                               ),
                             ),

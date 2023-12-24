@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_subm_1/shared/themes.dart';
 
@@ -22,15 +20,15 @@ class HomeCarousel extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: whiteColor,
+        color: orangeColor,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Container(
-            width: 45,
-            height: 45,
+            width: 60,
+            height: 60,
             margin: const EdgeInsets.only(
               bottom: 13,
             ),
@@ -44,11 +42,17 @@ class HomeCarousel extends StatelessWidget {
               ),
             ),
           ),
-          Text(
-            title,
-            style: blackTextStyle.copyWith(
-              fontSize: 12,
-              fontWeight: medium,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                title,
+                style: whiteTextStyle.copyWith(
+                  fontSize: 16,
+                  fontWeight: medium,
+                ),
+              ),
             ),
           ),
         ],

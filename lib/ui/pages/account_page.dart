@@ -45,7 +45,7 @@ class AccountPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Idan Rohman',
+                  'Gugun Gunawan',
                   style: blackTextStyle.copyWith(
                     fontSize: 12,
                   ),
@@ -61,7 +61,7 @@ class AccountPage extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'idanrohman@gmail.com',
+                  'careergunawan@gmail.com',
                   style: blackTextStyle.copyWith(
                     fontSize: 12,
                   ),
