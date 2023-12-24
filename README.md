@@ -15,7 +15,7 @@
    - **Description**: This screenshot highlights the restaurant details along with user ratings.
 
 4. **Add Review**
-   ![Add Review](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/b9c96e3b-7b55-43e4-976a-19d824972921)
+   ![Add Review](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/b9c96e3b-7b55-43e4-976a-19d824972921){:height="400px" width="225px"}
    - **Description**: This screenshot exhibits the user interface for adding a review to a restaurant.
 
 # Restaurant Finder App
