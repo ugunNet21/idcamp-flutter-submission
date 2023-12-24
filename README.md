@@ -1,6 +1,19 @@
 # flutter_subm_1
 
+# First image :
 ![image](https://github.com/ugunNet21/idcamp-flutter-middleup/assets/45864165/442141ac-17c9-416d-a3be-e510b36c3353)
+
+# Updated image :
+1. Image Home Dashboard
+![pic_home](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/6d222675-cefe-4b2c-b0b8-e5911e3903a1)
+2. Image Detail Restaurant
+![pic_detail_resto](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/a5ec5c82-13b2-4ae9-aa4b-3b96ac2faa47)
+3. Image Detail Resto Rating
+![pic_detail_resto_rating](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/4801171c-0173-40eb-b6bd-f0cbc6559313)
+4. Image Add Review
+![pic_input_add_review](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/b9c96e3b-7b55-43e4-976a-19d824972921)
+
+
 
 # Restaurant Finder App
 
