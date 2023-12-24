@@ -25,17 +25,10 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
       setState(() {
         restaurantDetail = updatedRestaurantDetail;
         _updatedReviews = updatedRestaurantDetail.customerReviews;
-
       });
       debugPrint('Data successfully refreshed.');
-
     } catch (e) {
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(
-      //     content: Text('Error refreshing data: $e'),
-      //     duration: Duration(seconds: 2),
-      //   ),
-      // );
+      debugPrint('Erro refreshing data. $e');
     }
   }
 
@@ -202,7 +195,6 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
               ),
             ),
             const SizedBox(height: 16),
-            // Add a section for user ratings and reviews
             ElevatedButton(
               onPressed: () async {
                 try {
@@ -210,6 +202,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   final RestaurantDetail updatedRestaurantDetail =
                       await _restaurantService
                           .fetchRestaurantDetail(restaurantDetail.id);
+                  // ignore: use_build_context_synchronously
                   Navigator.pushNamed(
                     currentContext,
                     '/add-review',
@@ -217,7 +210,6 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                   );
                 } catch (e) {
                   debugPrint('Error fetching restaurant detail: $e');
-                  // Handle error, show error message, or perform specific action.
                 }
               },
               child: Text(
@@ -238,7 +230,6 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                       blackTextStyle.copyWith(fontSize: 18, fontWeight: bold),
                 ),
                 const SizedBox(height: 8),
-                // Display the restaurant's average rating
                 Row(
                   children: [
                     const Icon(Icons.star),
@@ -276,7 +267,7 @@ class _RestaurantDetailPageState extends State<RestaurantDetailPage> {
                                   fontSize: 16, fontWeight: bold),
                             ),
                             subtitle: Text(
-                              '${review.review}',
+                              review.review,
                               style: blackTextStyle.copyWith(fontSize: 14),
                             ),
                           ),

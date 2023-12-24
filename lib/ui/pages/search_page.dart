@@ -3,13 +3,16 @@ import 'package:flutter_subm_1/models/restaurant.dart';
 import 'package:flutter_subm_1/services/restaurant_service.dart';
 
 class RestaurantSearchPage extends StatefulWidget {
+  const RestaurantSearchPage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _RestaurantSearchPageState createState() => _RestaurantSearchPageState();
 }
 
 class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
   final RestaurantService _restaurantService = RestaurantService();
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   List<Restaurant> _searchResults = [];
 
   @override
@@ -24,10 +27,10 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
           children: [
             TextField(
               controller: _searchController,
-              decoration: InputDecoration(labelText: 'Search Restaurants'),
+              decoration: const InputDecoration(labelText: 'Search Restaurants'),
               onChanged: _onSearchTextChanged,
             ),
-            SizedBox(height: 16),
+          const  SizedBox(height: 16),
             Expanded(
               child: _buildSearchResults(),
             ),
@@ -51,7 +54,7 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
         _searchResults = results;
       });
     } catch (e) {
-      print('Error searching restaurants: $e');
+      debugPrint('Error searching restaurants: $e');
     }
   }
 
@@ -73,13 +76,14 @@ class _RestaurantSearchPageState extends State<RestaurantSearchPage> {
             try {
               RestaurantDetail restaurantDetail =
                   await _restaurantService.fetchRestaurantDetail(restaurant.id);
+              // ignore: use_build_context_synchronously
               Navigator.pushNamed(
                 context,
                 '/restaurant-detail',
                 arguments: {'restaurantDetail': restaurantDetail},
               );
             } catch (e) {
-              print('Error fetching restaurant detail: $e');
+              debugPrint('Error fetching restaurant detail: $e');
             }
           },
         );

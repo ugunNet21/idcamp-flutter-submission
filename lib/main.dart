@@ -12,7 +12,9 @@ void main() {
 }
 
 class MainApp extends StatelessWidget {
-  const MainApp({Key? key});
+  const MainApp({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +26,8 @@ class MainApp extends StatelessWidget {
         '/home': (context) => const HomeTabPage(),
         '/login-page': (context) => const LoginPage(),
         '/account-page': (context) => const AccountPage(),
-        '/restaurant-detail': (context) => RestaurantDetailPage(),
-        '/restaurant-search': (context) =>  RestaurantSearchPage(),
-        // '/restaurant-list': (context) => const RestaurantList(),
+        '/restaurant-detail': (context) => const RestaurantDetailPage(),
+        '/restaurant-search': (context) => const RestaurantSearchPage(),
         '/add-review': (context) {
           final Map<String, dynamic> args = ModalRoute.of(context)!
               .settings

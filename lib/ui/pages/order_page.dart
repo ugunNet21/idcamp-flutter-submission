@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_subm_1/shared/themes.dart';
 
 class OrderRestaurantPage extends StatelessWidget {
-  const OrderRestaurantPage({Key? key});
+  const OrderRestaurantPage({super.key});
 
   @override
   Widget build(BuildContext context) {

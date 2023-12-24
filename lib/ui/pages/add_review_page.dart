@@ -4,11 +4,9 @@ import 'package:flutter_subm_1/services/restaurant_service.dart';
 import 'package:flutter_subm_1/shared/themes.dart';
 import 'package:get/get.dart';
 
+// ignore: must_be_immutable
 class AddReviewPage extends StatelessWidget {
   final String restaurantId;
-  final RestaurantService _restaurantService = RestaurantService();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _reviewController = TextEditingController();
   var updatedReviews = <CustomerReview>[].obs;
   final AddReviewController controller = Get.put(AddReviewController());
 
@@ -25,45 +23,67 @@ class AddReviewPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextFormField(
-                controller: controller.nameController,
-                decoration: InputDecoration(
-                  labelText: 'Your Name',
-                  hintStyle: blackTextStyle.copyWith(
-                    fontSize: 14,
-                    fontWeight: medium,
+              Column(
+                children: [
+                  TextFormField(
+                    controller: controller.nameController,
+                    decoration: InputDecoration(
+                      labelText: 'Your Name',
+                      hintStyle: blackTextStyle.copyWith(
+                        fontSize: 14,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your name';
+                      }
+                      return null;
+                    },
                   ),
-                ),
-              ),
-              const SizedBox(height: 16),
-              TextFormField(
-                controller: controller.reviewController,
-                maxLines: 3,
-                decoration: InputDecoration(
-                  labelText: 'Your Review',
-                  hintStyle: blackTextStyle.copyWith(
-                    fontSize: 14,
-                    fontWeight: medium,
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: controller.reviewController,
+                    maxLines: 3,
+                    decoration: InputDecoration(
+                      labelText: 'Your Review',
+                      hintStyle: blackTextStyle.copyWith(
+                        fontSize: 14,
+                        fontWeight: medium,
+                      ),
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your review';
+                      }
+                      return null;
+                    },
                   ),
-                ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () async {
+                      if (controller.nameController.text.isEmpty ||
+                          controller.reviewController.text.isEmpty) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                        const  SnackBar(
+                            content: Text('Please fill in all fields.'),
+                            duration: Duration(seconds: 2),
+                          ),
+                        );
+                      } else {
+                        await controller.addReview(restaurantId);
+                        controller.nameController.clear();
+                        controller.reviewController.clear();
+                      }
+                    },
+                    child: Text(
+                      'Submit Review',
+                      style: orangeTextStyle.copyWith(
+                          fontSize: 16, fontWeight: bold),
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () async {
-                  await controller.addReview(restaurantId);
-
-                  // Setelah review ditambahkan, kosongkan input fields
-                  controller.nameController.clear();
-                  controller.reviewController.clear();
-                },
-                child: Text(
-                  'Submit Review',
-                  style:
-                      orangeTextStyle.copyWith(fontSize: 16, fontWeight: bold),
-                ),
-              ),
-
-              // Menampilkan hasil review di bawah tombol
               Obx(() {
                 if (controller.updatedReviews.isNotEmpty) {
                   return Column(
@@ -79,14 +99,14 @@ class AddReviewPage extends StatelessWidget {
                       ),
                       ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: controller.updatedReviews.length,
                         itemBuilder: (context, index) {
                           CustomerReview review =
                               controller.updatedReviews[index];
                           return Card(
                             elevation: 3,
-                            margin: EdgeInsets.symmetric(vertical: 8),
+                            margin: const EdgeInsets.symmetric(vertical: 8),
                             child: ListTile(
                               title: Text(
                                 review.name,
@@ -104,7 +124,7 @@ class AddReviewPage extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
                 }
               }),
             ],
