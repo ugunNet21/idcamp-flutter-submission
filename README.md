@@ -1,33 +1,34 @@
 # flutter_subm_1
 
-# First image :
+## First Image:
 ![image](https://github.com/ugunNet21/idcamp-flutter-middleup/assets/45864165/442141ac-17c9-416d-a3be-e510b36c3353)
 
-# Updated image :
-1. Image Home Dashboard
+## Updated Images:
+1. **Home Dashboard**
 ![pic_home](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/6d222675-cefe-4b2c-b0b8-e5911e3903a1)
-2. Image Detail Restaurant
+   
+2. **Detail Restaurant**
 ![pic_detail_resto](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/a5ec5c82-13b2-4ae9-aa4b-3b96ac2faa47)
-3. Image Detail Resto Rating
+   
+3. **Detail Restaurant Rating**
 ![pic_detail_resto_rating](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/4801171c-0173-40eb-b6bd-f0cbc6559313)
-4. Image Add Review
+   
+4. **Add Review**
 ![pic_input_add_review](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/b9c96e3b-7b55-43e4-976a-19d824972921)
-
-
 
 # Restaurant Finder App
 
 ## Overview
 
-This Flutter project is designed to help users find and explore information about various restaurants in a specific area. The application utilizes the [Restaurant API Dicoding](https://restaurant-api.dicoding.dev/) to fetch restaurant data.
+This Flutter project helps users find and explore information about various restaurants in a specific area. The application utilizes the [Restaurant API Dicoding](https://restaurant-api.dicoding.dev/) to fetch restaurant data.
 
 ## Libraries
 
-The application makes use of several Flutter libraries and packages, including:
+The application uses several Flutter libraries and packages:
 
 - `http`: Used for making HTTP requests to the restaurant API.
 - `carousel_slider`: Enables the use of a carousel to display advertisements or promotions.
-- `flutter_rating_bar`: Provides a widget for displaying ratings in star format.
+- `flutter_rating_bar`: Provides a widget for displaying ratings in a star format.
 - `provider`: Used for state management in the application.
 
 ## Concepts and Features
@@ -56,13 +57,14 @@ The application makes use of several Flutter libraries and packages, including:
 
 ## Running the Application
 
-1. Make sure the Flutter SDK is installed on your machine.
+1. Ensure the Flutter SDK is installed on your machine.
 2. Clone this repository.
 3. Open a terminal in the project directory and run `flutter pub get` to download all dependencies.
 4. Run the application with the command `flutter run`.
 
 ## Notes
 
-Ensure to replace some placeholders with actual data in the code, such as image URLs or API endpoints that might change. Also, check and adjust internet access permissions in the `android/app/src/main/AndroidManifest.xml` and `ios/Runner/Info.plist` files.
+- Replace placeholder data, such as image URLs or API endpoints, with actual data in the code.
+- Check and adjust internet access permissions in the `android/app/src/main/AndroidManifest.xml` and `ios/Runner/Info.plist` files.
 
 **Happy coding!**
