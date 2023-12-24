@@ -1,20 +1,22 @@
-# flutter_subm_1
-
 ## First Image:
-![image](https://github.com/ugunNet21/idcamp-flutter-middleup/assets/45864165/442141ac-17c9-416d-a3be-e510b36c3353)
+![App Screenshot](https://github.com/ugunNet21/idcamp-flutter-middleup/assets/45864165/442141ac-17c9-416d-a3be-e510b36c3353)
 
 ## Updated Images:
 1. **Home Dashboard**
-![pic_home](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/6d222675-cefe-4b2c-b0b8-e5911e3903a1)
-   
+   ![Home Dashboard](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/6d222675-cefe-4b2c-b0b8-e5911e3903a1)
+   - **Description**: This screenshot illustrates the Home Dashboard of the application.
+
 2. **Detail Restaurant**
-![pic_detail_resto](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/a5ec5c82-13b2-4ae9-aa4b-3b96ac2faa47)
-   
+   ![Detail Restaurant](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/a5ec5c82-13b2-4ae9-aa4b-3b96ac2faa47)
+   - **Description**: This screenshot showcases the detailed view of a specific restaurant.
+
 3. **Detail Restaurant Rating**
-![pic_detail_resto_rating](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/4801171c-0173-40eb-b6bd-f0cbc6559313)
-   
+   ![Detail Restaurant Rating](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/4801171c-0173-40eb-b6bd-f0cbc6559313)
+   - **Description**: This screenshot highlights the restaurant details along with user ratings.
+
 4. **Add Review**
-![pic_input_add_review](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/b9c96e3b-7b55-43e4-976a-19d824972921)
+   ![Add Review](https://github.com/ugunNet21/idcamp-flutter-submission/assets/45864165/b9c96e3b-7b55-43e4-976a-19d824972921)
+   - **Description**: This screenshot exhibits the user interface for adding a review to a restaurant.
 
 # Restaurant Finder App
 
@@ -33,17 +35,19 @@ The application uses several Flutter libraries and packages:
 
 ## Concepts and Features
 
-1. **Home Dashboard**: The main page displays a list of restaurants with several sections, including user profile, search button, ad carousel, and restaurant list.
+1. **GetX Library**: The application incorporates the GetX library for state management, navigation, and dependency injection.
 
-2. **Restaurant Detail Page**: A page that provides detailed information about a specific restaurant, including description, location, menu, and customer reviews.
+2. **Home Dashboard**: The main page displays a list of restaurants with several sections, including user profile, search button, ad carousel, and restaurant list.
 
-3. **Search Functionality**: Users can search for restaurants based on name or specific keywords.
+3. **Restaurant Detail Page**: A page that provides detailed information about a specific restaurant, including description, location, menu, and customer reviews.
 
-4. **Add Review Feature**: Users can add reviews or comments for a particular restaurant.
+4. **Search Functionality**: Users can search for restaurants based on name or specific keywords.
 
-5. **Navigation System**: The app uses a navigation system with `MaterialPageRoute` and `Navigator` to switch between pages.
+5. **Add Review Feature**: Users can add reviews or comments for a particular restaurant.
 
-6. **Pull-to-Refresh**: Implementation using `RefreshIndicator` allows users to pull down the screen to refresh restaurant data.
+6. **Navigation System**: The app uses a navigation system with `MaterialPageRoute` and `Navigator` to switch between pages.
+
+7. **Pull-to-Refresh**: Implementation using `RefreshIndicator` allows users to pull down the screen to refresh restaurant data.
 
 ## Project Structure
 
